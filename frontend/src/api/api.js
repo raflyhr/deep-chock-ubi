@@ -1,38 +1,38 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-    baseURL: 'http://localhost:8000/api', // Reverted to standard port
-    headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    },
+  baseURL: "http://103.197.190.173/api",
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
 });
 
 // Add a request interceptor to include the Bearer token
 api.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
-        }
-        return config;
-    },
-    (error) => {
-        return Promise.reject(error);
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
 );
 
 // Add a response interceptor to handle unauthenticated errors
 api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        if (error.response && error.response.status === 401) {
-            localStorage.removeItem('token');
-            localStorage.removeItem('user');
-            // Optional: window.location.href = '/login';
-        }
-        return Promise.reject(error);
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      // Optional: window.location.href = '/login';
     }
+    return Promise.reject(error);
+  },
 );
 
 export default api;

@@ -305,7 +305,7 @@ const AdminOrders = () => {
                                             <div key={idx} className="p-4 bg-white dark:bg-deepbrown-800/40 rounded-3xl flex items-center gap-4 border border-deepbrown-50 dark:border-deepbrown-700/30 group hover:border-terracotta-500/30 transition-all shadow-sm">
                                                 <div className="w-20 h-20 bg-cream-50 dark:bg-deepbrown-900 rounded-2xl flex items-center justify-center overflow-hidden border border-deepbrown-100 dark:border-deepbrown-700 group-hover:scale-105 transition-transform duration-500">
                                                     {item.menu?.image ? (
-                                                        <img src={`http://localhost:8000/storage/${item.menu.image}`} alt={item.menu.name} className="w-full h-full object-cover" />
+                                                        <img src={`http://103.197.190.173/storage/${item.menu.image}`} alt={item.menu.name} className="w-full h-full object-cover" />
                                                     ) : (
                                                         <ShoppingBag className="w-8 h-8 text-deepbrown-200" />
                                                     )}
