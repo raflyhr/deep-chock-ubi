@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/api/:match*",
+      "destination": "http://103.197.190.173/api/:match*"
+    },
+    {
+      "source": "/storage/:match*",
+      "destination": "http://103.197.190.173/storage/:match*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
