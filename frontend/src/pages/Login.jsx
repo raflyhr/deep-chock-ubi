@@ -28,7 +28,10 @@ const Login = () => {
             }
         } catch (error) {
             console.error('Login failed:', error);
-            alert(error.response?.data?.message || 'Login failed. Please check your credentials.');
+            console.error('Login failed:', error);
+            const errorMessage = error.response?.data?.message || error.message || 'Login failed';
+            const status = error.response?.status ? ` (Status: ${error.response.status})` : '';
+            alert(`${errorMessage}${status}. Please screenhot this if it fails.`);
         }
     };
 
